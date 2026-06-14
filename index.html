@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PUNJAB INVESTER</title>
+<style>
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+    background: url('xxxxxxx.jpg') no-repeat center/cover;
+    color: gold;
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    overflow: hidden;
+    height: 100vh;
+  }
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    text-shadow: 0 0 15px gold;
+  }
+  p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 10px;
+    text-shadow: 0 0 10px black;
+  }
+  /* Dollar falling animation */
+  .dollar {
+    position: absolute;
+    top: -50px;
+    font-size: 24px;
+    color: #00ff00;
+    animation: fall 5s linear infinite;
+  }
+  @keyframes fall {
+    0% {top: -50px;}
+    100% {top: 100vh;}
+  }
+</style>
+</head>
+<body>
+  <div class="overlay">
+    <h1>PUNJAB INVESTER</h1>
+    <p>Watch ads and earn $1 per ad instantly.</p>
+    <p>Deposit $50 and get $300 in 24 hours. Earn $25 every 10 minutes.</p>
+  </div>
+
+  <!-- Falling Dollars Script -->
+  <script>
+    function createDollar() {
+      const dollar = document.createElement('div');
+      dollar.classList.add('dollar');
+      dollar.innerHTML = '💵';
+      dollar.style.left = Math.random() * 100 + 'vw';
+      dollar.style.animationDuration = Math.random() * 3 + 3 + 's';
+      document.body.appendChild(dollar);
+      setTimeout(() => dollar.remove(), 6000);
+    }
+    setInterval(createDollar, 300);
+  </script>
+</body>
+</html>
