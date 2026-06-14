@@ -1,196 +1,52 @@
-      
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="ur">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MR. QAMBER AI Bot - Admin Panel</title>
+    <title>QAMBER AI - Bot Admin</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap');
-        body { font-family: 'Inter', sans-serif; }
-        .logo-font { font-family: 'Playfair Display', sans-serif; }
-        .glass { background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(20px); }
-        .card-hover { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
-        .card-hover:hover { transform: translateY(-12px) scale(1.03); box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.4); }
-        .toggle-switch { position: relative; display: inline-block; width: 52px; height: 28px; }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+        body { font-family: 'Inter', system-ui, sans-serif; }
+        .nav-active { background-color: #1e40af; color: white; border-radius: 8px; }
+        .card-hover:hover { transform: translateY(-4px); transition: all 0.3s; }
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 26px;
+        }
         .toggle-switch input { opacity: 0; width: 0; height: 0; }
-        .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #334155; transition: .4s; border-radius: 9999px; }
-        .slider:before { position: absolute; content: ""; height: 22px; width: 22px; left: 3px; bottom: 3px; background-color: white; transition: .4s; border-radius: 50%; }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: #334155;
+            transition: .4s;
+            border-radius: 9999px;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 20px;
+            width: 20px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
         input:checked + .slider { background-color: #22c55e; }
         input:checked + .slider:before { transform: translateX(24px); }
     </style>
 </head>
-<body class="bg-gradient-to-br from-slate-950 via-blue-950 to-slate-950 text-white min-h-screen">
+<body class="bg-gray-950 text-white min-h-screen">
 
-    <div class="flex h-screen">
-        <!-- Sidebar -->
-        <div class="w-72 glass border-r border-slate-700 p-6 flex flex-col">
-            <div class="flex items-center gap-3 mb-10">
-                <i class="fa-solid fa-robot text-4xl text-cyan-400"></i>
-                <div>
-                    <h1 class="logo-font text-3xl font-bold tracking-tight">QAMBER AI</h1>
-                    <p class="text-xs text-cyan-400 tracking-widest">BOT ADMIN</p>
-                </div>
-            </div>
+<div class="flex h-screen">
 
-            <nav class="space-y-2 flex-1">
-                <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-xl bg-white/10 text-white font-medium">
-                    <i class="fa-solid fa-gauge-high"></i> Dashboard
-                </a>
-                <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/10 transition">
-                    <i class="fa-solid fa-users"></i> My Clients
-                </a>
-                <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/10 transition">
-                    <i class="fa-solid fa-utensils"></i> Menus
-                </a>
-                <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/10 transition">
-                    <i class="fa-solid fa-chart-line"></i> Revenue
-                </a>
-                <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/10 transition">
-                    <i class="fa-solid fa-cog"></i> Settings
-                </a>
-            </nav>
-
-            <div class="mt-auto pt-6 border-t border-slate-700">
-                <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 bg-cyan-500 rounded-full flex items-center justify-center text-xl font-bold">Q</div>
-                    <div>
-                        <p class="font-semibold">Mr. Qamber</p>
-                        <p class="text-xs text-slate-400">Super Admin</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Main Content -->
-        <div class="flex-1 overflow-auto">
-            <!-- Top Bar -->
-            <div class="glass border-b border-slate-700 px-8 py-5 flex justify-between items-center sticky top-0 z-50">
-                <h2 class="text-2xl font-semibold">Welcome back, Mr. Qamber</h2>
-                <div class="flex items-center gap-4">
-                    <button onclick="changePassword()" 
-                            class="px-5 py-2 bg-white/10 hover:bg-white/20 rounded-xl flex items-center gap-2">
-                        <i class="fa-solid fa-key"></i> Change Password
-                    </button>
-                    <div class="px-4 py-2 bg-emerald-500/20 text-emerald-400 rounded-2xl text-sm font-medium flex items-center gap-2">
-                        <div class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
-                        All Bots Online
-                    </div>
-                </div>
-            </div>
-
-            <div class="p-8">
-                <!-- Stats -->
-                <div class="grid grid-cols-4 gap-6 mb-10">
-                    <div class="glass rounded-3xl p-6 card-hover">
-                        <p class="text-slate-400 text-sm">Total Clients</p>
-                        <p class="text-5xl font-bold mt-2">12</p>
-                        <p class="text-emerald-400 text-sm mt-3">↑ 3 this month</p>
-                    </div>
-                    <div class="glass rounded-3xl p-6 card-hover">
-                        <p class="text-slate-400 text-sm">Active Bots</p>
-                        <p class="text-5xl font-bold mt-2 text-emerald-400">11</p>
-                    </div>
-                    <div class="glass rounded-3xl p-6 card-hover">
-                        <p class="text-slate-400 text-sm">Orders Today</p>
-                        <p class="text-5xl font-bold mt-2">87</p>
-                    </div>
-                    <div class="glass rounded-3xl p-6 card-hover">
-                        <p class="text-slate-400 text-sm">Revenue</p>
-                        <p class="text-5xl font-bold mt-2">₹1,24,500</p>
-                    </div>
-                </div>
-
-                <!-- Clients Section -->
-                <h3 class="text-xl font-semibold mb-6">My Restaurant Clients</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="clientsList">
-                    <!-- JS se dynamically add honge -->
-                </div>
-            </div>
-
-            <footer class="text-center py-6 text-slate-500 text-sm">
-                Powered by <span class="text-cyan-400 font-semibold">MR. QAMBER</span> • AI Bot System 2026
-            </footer>
-        </div>
-    </div>
-
-    <!-- Password Change Modal -->
-    <div id="passwordModal" class="hidden fixed inset-0 bg-black/70 flex items-center justify-center z-50">
-        <div class="glass rounded-3xl p-8 w-full max-w-md">
-            <h3 class="text-2xl font-semibold mb-6">Change Password</h3>
-            <input type="password" id="oldPass" placeholder="Old Password" 
-                   class="w-full bg-slate-900 border border-slate-600 rounded-2xl px-5 py-4 mb-4 focus:outline-none focus:border-cyan-400">
-            <input type="password" id="newPass" placeholder="New Password" 
-                   class="w-full bg-slate-900 border border-slate-600 rounded-2xl px-5 py-4 mb-6 focus:outline-none focus:border-cyan-400">
-            <div class="flex gap-4">
-                <button onclick="hideModal()" 
-                        class="flex-1 py-4 rounded-2xl border border-slate-600 hover:bg-slate-800">Cancel</button>
-                <button onclick="savePassword()" 
-                        class="flex-1 py-4 bg-cyan-500 hover:bg-cyan-600 rounded-2xl font-semibold">Update Password</button>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        // Sample Clients
-        const clients = [
-            { name: "Al-Baik Restaurant", status: true, orders: 45 },
-            { name: "Spice Garden", status: true, orders: 32 },
-            { name: "Punjabi Dhaba", status: false, orders: 18 },
-            { name: "Pizza Hub", status: true, orders: 67 }
-        ];
-
-        function renderClients() {
-            const container = document.getElementById('clientsList');
-            container.innerHTML = '';
-            clients.forEach((client, index) => {
-                const div = document.createElement('div');
-                div.className = `glass rounded-3xl p-6 card-hover`;
-                div.innerHTML = `
-                    <div class="flex justify-between items-start">
-                        <div>
-                            <h4 class="font-semibold text-lg">${client.name}</h4>
-                            <p class="text-sm text-slate-400">${client.orders} orders today</p>
-                        </div>
-                        <label class="toggle-switch">
-                            <input type="checkbox" ${client.status ? 'checked' : ''} onchange="toggleBot(${index})">
-                            <span class="slider"></span>
-                        </label>
-                    </div>
-                    <div class="mt-6 text-xs flex justify-between text-slate-400">
-                        <span>WhatsApp Bot</span>
-                        <span class="${client.status ? 'text-emerald-400' : 'text-red-400'}">
-                            ${client.status ? '● ONLINE' : '○ OFFLINE'}
-                        </span>
-                    </div>
-                `;
-                container.appendChild(div);
-            });
-        }
-
-        function toggleBot(index) {
-            clients[index].status = !clients[index].status;
-            renderClients();
-            // Yahan real backend call aa sakta hai baad mein
-        }
-
-        function changePassword() {
-            document.getElementById('passwordModal').classList.remove('hidden');
-        }
-
-        function hideModal() {
-            document.getElementById('passwordModal').classList.add('hidden');
-        }
-
-        function savePassword() {
-            alert("✅ Password successfully changed! (Demo)");
-            hideModal();
-        }
-
-        // Initialize
-        renderClients();
-    </script>
-</body>
-</html>
+    <!-- Sidebar -->
+    <div class="w-64 bg-gray-900 border-r border-gray-800 flex flex-col">
+        <div class="p-6 border-b border-gray-800">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-blue-600 rounded-2xl flex items-center justify-center text-2xl">
